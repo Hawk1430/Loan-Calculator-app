@@ -69,7 +69,7 @@ const ExchangeRatesTable = () => {
                   {row.code}
                 </TableCell>
                 <TableCell>{row.rate.toFixed(4)}</TableCell>
-                <TableCell>{(row.rate).toFixed(2)} {row.code}</TableCell>
+                <TableCell>{(1 / row.rate).toFixed(2)} {row.code}</TableCell>
               </TableRow>
             ))}
           </TableBody>

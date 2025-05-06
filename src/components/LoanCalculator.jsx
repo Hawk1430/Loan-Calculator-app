@@ -25,7 +25,7 @@ const LoanCalculator = () => {
     amortizationSchedule,
   } = useEMICalculation();
 
-  const { currency, currencySymbol } = useContext(CurrencyContext);
+  const {  currencySymbol } = useContext(CurrencyContext);
   const [showTable, setShowTable] = useState(false);
 
   const handleLoanAmountChange = (e) => {
