@@ -40,36 +40,23 @@ export const CurrencyContextProvider = ({ children }) => {
   }, [currency]);
 
   // Fetch exchange rates
+  const API_KEY = import.meta.env.VITE_API_KEY;
+
   const fetchExchangeRates = async (baseCurrency = 'USD') => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`https://v6.exchangerate-api.com/v6/dd347f72a7391d4a24878e56/latest/${baseCurrency}`);
-
+      const response = await axios.get(`https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${baseCurrency}`);
+      
       console.log(response);
-      
-      // Mock response
-      setTimeout(() => {
-        const mockRates = {
-          USD: 1,
-          EUR: 0.91,
-          GBP: 0.78,
-          JPY: 148.67,
-          INR: 83.12,
-          CAD: 1.35,
-          AUD: 1.51,
-          CNY: 7.19,
-          // More mock rates...
-        };
-        setExchangeRates(mockRates);
-        setIsLoading(false);
-      }, 500);
-      
+      setExchangeRates(response.data.conversion_rates);
+      setIsLoading(false);
     } catch (err) {
       setError(err.message || 'Failed to fetch exchange rates');
       setIsLoading(false);
     }
   };
+  
 
   // Initial fetch
   useEffect(() => {

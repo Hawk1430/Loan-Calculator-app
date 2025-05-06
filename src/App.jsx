@@ -7,10 +7,12 @@ import ExchangeRatesPage from './pages/ExchangeRatesPage';
 import AboutPage from './pages/AboutPage';
 import ErrorPage from './pages/ErrorPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { CurrencyContextProvider } from './context/CurrencyContext';
 
 function App() {
   return (
     <ThemeContextProvider>
+      <CurrencyContextProvider>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -19,6 +21,7 @@ function App() {
         <Route path="/error-demo" element={<ErrorPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      </CurrencyContextProvider>
     </ThemeContextProvider>
   );
 }

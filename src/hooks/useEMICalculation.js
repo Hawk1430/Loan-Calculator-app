@@ -39,7 +39,7 @@ const useEMICalculation = () => {
             emi: emiValue,
             principal: principalPayment,
             interest: interestPayment,
-            remainingBalance: Math.max(0, remainingBalance), // Ensure non-negative
+            remainingBalance: Math.max(0, remainingBalance), 
           });
         }
         

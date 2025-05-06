@@ -126,7 +126,7 @@ const LoanCalculator = () => {
         </Grid>
       </Paper>
 
-      {emi > 0 && (
+      {showTable && emi > 0 && (
         <Box sx={{ textAlign: 'center', mb: 4 }}>
           <Typography variant="h5" gutterBottom>
             Monthly EMI: {currencySymbol}
