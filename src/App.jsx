@@ -1,23 +1,26 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import Exchange from './pages/Exchange'
-import { About } from './pages/About'
-import Navbar from './components/NavBar'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { ThemeContextProvider } from './context/ThemeContext';
+import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import ExchangeRatesPage from './pages/ExchangeRatesPage';
+import AboutPage from './pages/AboutPage';
+import ErrorPage from './pages/ErrorPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
-
   return (
-    <>
-      <Navbar/>
+    <ThemeContextProvider>
+      <Header />
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/exchange_rates_live' element={<Exchange/>} />
-        <Route path='/about' element={<About/>} />
-        <Route path='/error' element={<Error/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/exchange-rates" element={<ExchangeRatesPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/error-demo" element={<ErrorPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </>
-  )
+    </ThemeContextProvider>
+  );
 }
 
-export default App
+export default App;
